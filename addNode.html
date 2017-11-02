@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>创建添加节点</title>
+	<script type="text/javascript">
+		/*window.addEventListener("load",fun);*/
+		//window.onload = function(){};
+		//window.addEventListenter("load",function(){});
+		/*function fun(){
+			var a = document.getElementsByTagName("body")[0];
+			var b = document.createElement("div");
+			var c = document.createTextNode("好迪真好");
+			a.appendChild(b);
+			b.appendChild(c);
+		}*/
+		window.onload = function(){
+			/*var a = document.getElementById("form1");
+			if(a.id){
+				alert("存在id属性");
+			}
+			var b = document.getElementsByTagName("input")[0];
+			if(b.checked){
+				alert("存在checked属性");
+			}else{
+				alert("不存在checked属性");
+			}*/
+			var a = document.getElementById("submit");
+			a.onclick = function(){
+				var b = document.getElementsByName("type");
+				var typeval = null;
+				for(var i = 0; i < b.length; i++){
+					if(b[i].checked){
+						typeval = b[i].value;
+						break;
+					}
+				}
+				if(typeval == null){
+					alert("请选择类型");
+					return false
+				}
+				console.log(typeval);
+				var c = document.getElementsByName("content")[0];
+				var d = c.value;
+				var e =/^\s*|^\s*/g;
+				d = d.replace(e,"");
+				c.value = d;
+				if(d == ""){
+					alert("请输入内容");
+					return false;
+				}
+				alert(c.value);
+				var f = document.getElementById(typeval);
+				console.log(f);
+				var g = document.createElement("li");
+				console.log(g);
+				f.appendChild(g);
+				var h = document.createTextNode(c.value);
+				console.log(h);
+				g.appendChild(h);
+				var m = document.getElementsByTagName("li");
+				for(var i = 0; i < m.length; i++){
+					m[i].onclick = function(){
+						var n = this.firstChild.nodeValue;
+						alert(n);
+					};
+				}
+				return false;
+			};
+				
+		};
+	</script>
+</head>
+<body>
+	<ul id="female">
+		<li>你好</li>
+		<li>我好</li>
+		<li>大家好</li>
+	</ul>
+	<ul id="male">
+		<li>nihao</li>
+		<li>wohao</li>
+		<li>dajiahao</li>
+	</ul>
+	<form method="post">
+		<input type="radio" name="type" value="female" />女
+		<input type="radio" name="type" value="male" />男
+		<input type="text" name="content" value="请输入内容" />
+		<input type="submit" name="tijiao" value="提交" id="submit">
+	</form>
+</body>
+</html>
