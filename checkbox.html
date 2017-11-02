@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Checkbox全选</title>
+	<style type="text/css">
+		
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var btn = document.getElementsByName("btn");
+			for(var i = 0; i < btn.length; i++){
+				btn[i].style.width = "60px";
+			}
+			//全选/全不选
+			document.getElementById("checkedAll_2").onclick = function(){
+				var flag = this.checked;
+				var items = document.getElementsByName("items");
+				for(var j = 0; j < items.length; j++){
+						items[j].checked = flag;
+				}
+			};
+			//一个未选中就取消全选
+			var items = document.getElementsByName("items");
+			for(var i = 0; i < items.length; i++){
+				items[i].onclick = function(){
+					var num = 0;
+					for(var j = 0; j < items.length; j++){
+						if(items[j].checked){
+							num++;
+						}
+					}
+					document.getElementById("checkedAll_2").checked = (items.length == num);
+				};
+			}
+			//全选
+			btn[0].onclick = function(){
+				document.getElementById("checkedAll_2").checked = true;
+				var items = document.getElementsByName("items");
+				for(var i = 0; i < items.length; i++){
+					items[i].checked = true;
+				}
+			};
+			//全不选
+			btn[1].onclick = function(){
+				document.getElementById("checkedAll_2").checked = false;
+				var items = document.getElementsByName("items");
+				for(var i = 0; i < items.length; i++){
+					items[i].checked = false;
+				}
+			};
+			//反选
+			btn[2].onclick = function(){
+				//document.getElementById("checkedAll_2").checked = false;
+				var items = document.getElementsByName("items");
+				for(var i = 0; i < items.length; i++){
+					items[i].checked = !items[i].checked;
+					var num = 0;
+					for(var j = 0; j < items.length; j++){
+						if(items[j].checked){
+							num++;
+						}
+					}
+					document.getElementById("checkedAll_2").checked = (items.length == num);
+				}
+			};
+			//提交
+			btn[3].onclick = function(){
+				var items = document.getElementsByName("items");
+				for(var i = 0; i < items.length; i++){
+					if (items[i].checked) {
+						console.log(items[i].value);
+						alert(items[i].value);
+						var a = document.createElement("p");
+						var b = document.getElementsByTagName("body")[0];
+						b.appendChild(a);
+						var d = document.createTextNode(items[i].value);
+						a.appendChild(d);
+					}
+				}
+			};
+
+			//需求：若#checkedAll_2被选中，则name=items的checkbox都被选中
+			//若#checkedAll_2取消选中，则name=items的checkbox都取消选中
+			//若name=items的checkbox都被选中，则name=items的checkbox也都被选中
+			//若name=items的checkbox有一个没有背选中，则checkedAll_2取消选中
+
+			//提示：时间需要加给#checkedAll_2,获取name=items的checkbox数组
+			//判断是否被选中，若被选择，则name=items的checkbox都要被选择
+			//若没有背选择，则name=items的checkbox都要取消选择
+			//根据是否存在checked属性来判断是否被选择，可以使其checked属性=true被选择
+			//checked = false取消选择
+
+			//还需要给每个name=items的checkbox加响应函数
+			//判断name=items的checkbox是否被选中：选择的个数和总个数是否相等
+			//若都被选择：则#checkedAll_2被选择
+			//若没有都被选择：则使checkedAll_2取消选择
+
+		};
+	</script>
+</head>
+<body>
+	你爱好的运动是？<input id="checkedAll_2" type="checkbox" name="" value="">全选/全不选
+	<br>
+	<input type="checkbox" name="items" value="足球">足球
+	<input type="checkbox" name="items" value="篮球">篮球
+	<input type="checkbox" name="items" value="羽毛球">羽毛球
+	<input type="checkbox" name="items" value="乒乓球">乒乓球
+	<br>
+	<input type="button" name="btn" value="全选">
+	<input type="button" name="btn" value="全不选">
+	<input type="button" name="btn" value="反选">
+	<input type="submit" name="btn" value="提交">
+</body>
+</html>
