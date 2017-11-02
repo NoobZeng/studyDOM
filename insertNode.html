@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>插入节点</title>
+	<script type="text/javascript">
+		window.onload = function(){
+			var a = document.getElementById("female");
+			var b = document.getElementById("male");
+			var ac = a.getElementsByTagName("li")[0];
+			var bd = b.getElementsByTagName("li")[0];
+			//a.insertBefore(bd,ac);
+			insertAfter(bd,ac);
+
+			function insertAfter(newNode,reNode){
+				var reParent = reNode.parentNode;
+				if(reParent){
+					if(reNode == reParent.lastChild){
+						reParent.appendChild(newNode);
+					}else{
+						var lastNode = reNode.nextSibling;
+						reParent.insertBefore(newNode,lastNode);
+					}
+				}
+			}
+		};
+	</script>
+</head>
+<body>
+	<ul id="female">
+		<li>你好</li>
+		<li>我好</li>
+		<li>大家好</li>
+	</ul>
+	<ul id="male">
+		<li>nihao</li>
+		<li>wohao</li>
+		<li>dajiahao</li>
+	</ul>
+</body>
+</html>
