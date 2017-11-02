@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>删除节点</title>
+	<script type="text/javascript">
+		window.onload = function(){
+			//var a = confirm("是否删除?");
+			//alert(a); 结果：true or false
+
+			var liNodes = document.getElementsByTagName("li");
+			for(var i = 0; i < liNodes.length; i++){
+				liNodes[i].onclick = function(){
+					var flag = confirm("是否删除" + this.firstChild.nodeValue + "节点?");
+					if(flag == true){
+						this.parentNode.removeChild(this);
+					}
+				}
+			}
+		};
+	</script>
+</head>
+<body>
+	<ul id="female">
+		<li>你好</li>
+		<li>我好</li>
+		<li>大家好</li>
+	</ul>
+	<ul id="male">
+		<li>nihao</li>
+		<li>wohao</li>
+		<li>dajiahao</li>
+	</ul>
+</body>
+</html>

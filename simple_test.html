@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>两个实验</title>
+	<script type="text/javascript">
+		window.addEventListener("load",fun1);
+		function fun1(){
+			var a = document.getElementById("ul1");
+			var b = a.getElementsByTagName("li");
+			for(var i = 0; i < b.length; i++){
+				b[i].addEventListener("click",fun2);
+				function fun2(){
+					var c = this.firstChild.nodeValue;
+					alert(c);
+					var d = /^\^{2}/g;
+					if(d.test(c)){
+						c = c.replace(d,"");
+					}else{
+						c = "^^" + c;
+					}
+					this.firstChild.nodeValue = c;
+				}
+			}
+		}
+
+	</script>
+</head>
+<body>
+	<ul id="ul1">
+		<li>你好</li>
+		<li>我好</li>
+		<li>大家好</li>
+		<li>美的真好</li>
+	</ul>
+</body>
+</html>

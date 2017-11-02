@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>替换节点以及自定义的replaceEach</title>
+	<script type="text/javascript">
+		window.addEventListener("load",fun);
+		function fun(){
+			var a = document.getElementById("female");
+			var b = document.getElementById("male");
+			var c = a.getElementsByTagName("li")[2];
+			var d = b.getElementsByTagName("li")[2];
+			replaceEach(c,d);
+			//a.replaceChild(d,c);
+			/*var e = c.cloneNode(true);
+			b.replaceChild(e,d);
+			a.replaceChild(d,c);*/
+		}
+		//节点互换函数
+		function replaceEach(aNode,bNode){
+			aParent = aNode.parentNode;
+			bParent = bNode.parentNode;
+			if(aParent && bParent){ //必须要有父节点
+				var aNode2 = aNode.cloneNode(true);
+				bParent.replaceChild(aNode2,bNode);
+				aParent.replaceChild(bNode,aNode);
+			}
+		}
+	</script>
+</head>
+<body>
+	<ul id="female">
+		<li>你好</li>
+		<li>我好</li>
+		<li>大家好</li>
+	</ul>
+	<ul id="male">
+		<li>nihao</li>
+		<li>wohao</li>
+		<li>dajiahao</li>
+	</ul>
+</body>
+</html>

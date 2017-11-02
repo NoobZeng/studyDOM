@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>添加删除节点实验</title>
+	<style type="text/css">
+		table,tr,td{
+			border: 1px solid red;
+		}
+		table{
+			width: 250px;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			//添加新人
+			var addNode = document.getElementById("submit");
+			addNode.onclick = function(){
+				var kuohao = document.getElementsByTagName("input");
+				/*var name = kuohao[0].value;
+				var age = kuohao[1].value;
+				var salary = kuohao[2].value;
+				console.log(name + age + salary);
+
+				var tableNode = document.getElementsByTagName("table")[0];
+				var trNode = document.createElement("tr");
+				tableNode.appendChild(trNode);
+
+				var tdNode1 = document.createElement("td");
+				trNode.appendChild(tdNode1);
+				var textNode =document.createTextNode(name);
+				tdNode1.appendChild(textNode);
+
+				var tdNode2 = document.createElement("td");
+				trNode.appendChild(tdNode2);
+				var textNode =document.createTextNode(age);
+				tdNode2.appendChild(textNode);
+
+				var tdNode3 = document.createElement("td");
+				trNode.appendChild(tdNode3);
+				var textNode =document.createTextNode(salary);
+				tdNode3.appendChild(textNode);*/
+
+				var tableNode = document.getElementsByTagName("table")[0];
+				var trNode = document.createElement("tr");
+				tableNode.appendChild(trNode);
+				for(var i = 0; i< kuohao.length; i++){
+					var content = kuohao[i].value;
+					console.log(content);
+					if(content == "提交"){
+						content = "删除";
+						console.log(content);
+					}
+					var tdNode = document.createElement("td");
+					trNode.appendChild(tdNode);
+					var textNode =document.createTextNode(content);
+					tdNode.appendChild(textNode);
+				}
+				delfun(tableNode.getElementsByTagName("tr"));
+				return false;
+			};
+			//删除新人
+			function delfun(trallNode){
+				trallNode = document.getElementsByTagName("tr");
+				for(var j = 0; j < trallNode.length; j++){
+					var tdallNode = trallNode[j].getElementsByTagName("td");
+					if(tdallNode[3].firstChild.nodeValue == "删除"){
+						trallNode[j].onclick = function(){
+							this.parentNode.removeChild(this);
+							return false;
+						};
+					}
+				}
+			}
+			delfun(document.getElementsByTagName("tr"));
+		};
+	</script>
+</head>
+<body>
+	<p>添加新人</p>
+	<form method="post">
+		姓名<input type="text" name="name">
+		年龄<input type="text" name="age">
+		薪资<input type="text" name="salary">
+		<input type="submit" name="submit" value="提交" id="submit">
+		<hr>
+	</form>
+	<table>
+		<tr>
+			<td>姓名</td>
+			<td>年龄</td>
+			<td>薪资</td>
+			<td>操作</td>
+		</tr>
+		<tr>
+			<td>小白</td>
+			<td>19</td>
+			<td>5000</td>
+			<td>删除</td>
+		</tr>
+		<tr>
+			<td>小黑</td>
+			<td>22</td>
+			<td>5500</td>
+			<td>删除</td>
+		</tr>
+	</table>
+</body>
+</html>

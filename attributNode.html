@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>属性节点</title>
+	<script type="text/javascript">
+		window.onload = function(){
+			var ulNode = document.getElementById("method");
+			ulNode.aaa = "bbb";
+			console.log(ulNode.aaa);
+			console.log(ulNode["aaa"]);
+			console.log(ulNode.getAttribute("id"));
+			ulNode.setAttribute("type","button");
+			ulNode.setAttribute("value","再贱");
+			ulNode.removeAttribute("type");
+		};
+	</script>
+</head>
+<body>
+	<input value="ok" id="method">
+</body>
+</html>

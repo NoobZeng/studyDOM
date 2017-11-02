@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>innerHTML</title>
+	<script type="text/javascript">
+		window.addEventListener("load",function(){
+			var a = document.getElementById("female");
+			//console.log(a.innerHTML);
+			var b = document.getElementById("male");
+			var c = a.innerHTML;
+			a.innerHTML = b.innerHTML;
+			b.innerHTML = c;
+			console.log(c);
+		});
+	</script>
+</head>
+<body>
+	<ul id="female">
+		<li>你好</li>
+		<li>我好</li>
+		<li>大家好</li>
+	</ul>
+	<ul id="male">
+		<li>nihao</li>
+		<li>wohao</li>
+		<li>dajiahao</li>
+	</ul>
+</body>
+</html>

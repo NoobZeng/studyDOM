@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>所有节点都有的三个属性</title>
+	<script type="text/javascript">
+		window.onload = function(){
+			//元素节点
+			var a = document.getElementById("ul1");
+			console.log(a.nodeType); //1
+			console.log(a.nodeName); //ul,元素名
+			console.log(a.nodeValue); //null,元素值
+			//属性节点
+			var b = document.getElementById("inputid").getAttributeNode("name");
+			console.log(b.nodeType); //2
+			console.log(b.nodeName); //name,属性名
+			console.log(b.nodeValue); //inputtext,属性值
+			//文本节点
+			var c = a.getElementsByTagName("li")[2].firstChild;
+			console.log(c.nodeType); //3
+			console.log(c.nodeName); //#text
+			console.log(c.nodeValue); //大家好
+		};
+	</script>
+</head>
+<body>
+	<ul id="ul1">
+		<li>你好</li>
+		<li>我好</li>
+		<li>大家好</li>
+	</ul>
+	<input type="text" name="inputtext" id="inputid">
+</body>
+</html>

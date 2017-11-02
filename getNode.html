@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>获取元素节点</title>
+	<script type="text/javascript">
+		window.addEventListener("load",function(){
+			var a = document.getElementById("ancient");
+			console.log(a);
+			var b = document.getElementsByTagName("li");
+			console.log(b.length);
+			var c = document.getElementById("modern");
+			var d = c.getElementsByTagName("li");
+			console.log(d.length);
+			var e = document.getElementsByName("gender");
+			console.log(e.length);
+		});
+	</script>
+</head>
+<body>
+	<p>古装剧</p>
+	<ul id = "ancient">
+		<li>仙剑奇侠传</li>
+		<li>雪花女神龙</li>
+		<li>神雕侠侣</li>
+		<li>射雕英雄传</li>
+	</ul>
+	<p>美剧</p>
+	<ul id = "modern">
+		<li>疑犯追踪</li>
+		<li>吸血鬼</li>
+		<li>越狱</li>
+		<li>神探夏洛克</li>
+	</ul>
+	<input type="radio" name="gender" value="male">
+	<input type="radio" name="gender" value="female">
+</body>
+</html>

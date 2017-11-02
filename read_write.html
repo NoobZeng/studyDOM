@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>读写属性节点</title>
+	<script type="text/javascript">
+		window.onload = function(){
+			var ab = document.getElementById("input2");
+			console.log(ab.value);
+			ab.value = "你个二傻子";
+			var ac = document.getElementById("ul1");
+			console.log(ac.childNodes.length);
+			var d = ac.getElementsByTagName("li");
+			console.log(d.length);
+			var e = ac.firstChild;
+			var f = ac.lastChild;
+			console.log(e);
+			console.log(f);
+			var g = document.getElementById("li1").firstChild;
+			console.log(g.nodeValue);
+			g.nodeValue = "小曾";
+		};
+	</script>
+</head>
+<body>
+	<ul id="ul1">
+		<li id="li1">xiaobai</li>
+		<li>xiaohei</li>
+		<li>xiaodou</li>
+		<li>xiaosen</li>
+	</ul>
+	<p>
+	<input type="text" name="input1" id="input2" value="input3">
+</body>
+</html>

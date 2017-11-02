@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>第一个dom程序</title>
+	<script type="text/javascript">
+
+		/*//当整个HTML文档完全加载成功后触发window.onload事件
+		window.onload = function(){
+			//获取所有的button节点，并取得第一个元素
+			var btn = document.getElementsByTagName("button")[0];
+			btn.onclick = function(){
+				alert("点我成功");
+			};
+		};*/
+
+		/*window.addEventListener("load",function(){
+			var btn = document.getElementsByTagName("button")[0];
+			btn.onclick = function(){
+				alert("点我成功");
+			};
+		});*/
+
+		/*window.addEventListener("load",function(){
+			var btn = document.getElementsByTagName("button")[0];
+			btn.addEventListener("click",function(){
+				alert("点我成功");
+				console.log("点我成功");
+			});
+		});*/
+
+		/*window.addEventListener("load",htmlfun);
+		function htmlfun(){
+			var btn = document.getElementsByTagName("button")[0];
+			btn.addEventListener("click",buttonfun);
+		}
+		function buttonfun(){
+			alert("点我成功");
+			console.log("click success");
+		}*/
+
+		/*
+			以上几种方式都是表达同一个意思
+		*/
+	</script>
+</head>
+<body>
+	<button>clickme</button>
+</body>
+</html>
