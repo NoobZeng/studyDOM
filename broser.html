@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>¿çä¯ÀÀÆ÷ÊÂ¼ş´¦Àí³ÌĞò</title>
+	<title>è·¨æµè§ˆå™¨äº‹ä»¶å¤„ç†ç¨‹åº</title>
 	<script type="text/javascript">
 		window.onload = function(){
 			var btn1 = document.getElementById("btn1");
@@ -12,13 +12,13 @@
 			btn2.onclick = alert("btn2");
 			btn3.onclick = alert("btn3");*/
 			function showMes(){
-				alert("ÏÔÊ¾ĞÅÏ¢");
+				alert("æ˜¾ç¤ºä¿¡æ¯");
 			}
-			//DOM0¼¶´¦Àí³ÌĞò
+			//DOM0çº§å¤„ç†ç¨‹åº
 			//btn1.onclick = showMes;
-			//DOM2¼¶´¦Àí³ÌĞò,ÔÚIEÀïÃæ±¨´í
+			//DOM2çº§å¤„ç†ç¨‹åº,åœ¨IEé‡Œé¢æŠ¥é”™
 			//btn2.addEventListener("click",showMes,false);
-			//IEÊÂ¼ş´¦Àí³ÌĞò£¬IEÖ®Íâ¶¼±¨´í
+			//IEäº‹ä»¶å¤„ç†ç¨‹åºï¼ŒIEä¹‹å¤–éƒ½æŠ¥é”™
 			//btn3.attachEvent("onclick",showMes);
 			var test = {
 				addHandel:function(element,type,handel){
@@ -30,6 +30,7 @@
 						element["on"+type];
 					}
 				}
+				,
 				removeHandel:function(element,type,handel){
 					if(element.removeEventListener){
 						element.removeEventListener(type,handel,false);
