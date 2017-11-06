@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>跨浏览器事件处理程序</title>
+	<script type="text/javascript">
+		window.onload = function(){
+			var btn1 = document.getElementById("btn1");
+			var btn2 = document.getElementById("btn2");
+			var btn3 = document.getElementById("btn3");
+			/*btn1.onclick = alert("btn1");
+			btn2.onclick = alert("btn2");
+			btn3.onclick = alert("btn3");*/
+			function showMes(){
+				alert("显示信息");
+			}
+			//DOM0级处理程序
+			//btn1.onclick = showMes;
+			//DOM2级处理程序,在IE里面报错
+			//btn2.addEventListener("click",showMes,false);
+			//IE事件处理程序，IE之外都报错
+			//btn3.attachEvent("onclick",showMes);
+			var test = {
+				addHandel:function(element,type,handel){
+					if(element.addEventListener){
+						element.addEventListener(type,handel,false);
+					}else if(element.attachEvent){
+						element.attachEvent("on"+type,handel);
+					}else{
+						element["on"+type];
+					}
+				}
+				removeHandel:function(element,type,handel){
+					if(element.removeEventListener){
+						element.removeEventListener(type,handel,false);
+					}else if(element.detachEvent){
+						element.detachEvent("on"+type,handel);
+					}else{
+						element["on"+type] = null;
+					}
+				}
+			}
+			test.addHandel(btn1,"click",showMes);
+			test.removeHandel(btn1,"click",showMes);
+		};
+	</script>
+</head>
+<body>
+	<input type="button" name="" id="btn1" value="btn1">
+	<input type="button" name="" id="btn2" value="btn2">
+	<input type="button" name="" id="btn3" value="btn3">
+</body>
+</html>
