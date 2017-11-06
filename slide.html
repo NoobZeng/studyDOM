@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>简单的滑动门</title>
+	<style type="text/css">
+		#container{
+			height: 200px;
+			margin: 0 auto;
+			border-bottom: 1px solid #ccc;
+			overflow: hidden;
+			position: relative;
+		}
+		#container img{
+			width: 180px;
+			height: 200px;
+			position: absolute;
+			display: block;
+			left: 0;
+			border-left: 3px solid #ccc;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var box = document.getElementById("container");
+			var imgs = box.getElementsByTagName("img");
+			var imgwidth = imgs[0].offsetWidth;
+			console.log(imgwidth);
+			var exposewidth = 60;
+			var boxwidth = imgwidth + exposewidth * (imgs.length-1);
+			box.style.width = boxwidth + "px";
+			function setImgpos(){
+				for(var i = 1; i < imgs.length; i++){
+					imgs[i].style.left = imgwidth + exposewidth * (i - 1) + "px";
+				}
+			}
+			setImgpos();
+			var translate = imgwidth - exposewidth;
+			for(var i = 0; i < imgs.length; i++){
+				(function(i){
+					imgs[i].onmouseover = function(){
+						setImgpos();
+						for(var j = 0; j <= i; j++){
+							imgs[j].style.left = parseInt(imgs[j].style.left) - translate + "px";
+							var attributeImg = imgs[i].getAttribute("alt");
+							console.log(attributeImg);
+						}
+					}
+				})(i);
+			}
+		};
+	</script>
+</head>
+<body>
+	<div id="container">
+		<img src="images/01.jpg" alt="第一张">
+		<img src="images/02.jpg" alt="第二张">
+		<img src="images/03.jpg" alt="第三张">
+		<img src="images/04.jpg" alt="第四张">
+	</div>
+</body>
+</html>
