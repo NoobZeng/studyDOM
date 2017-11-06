@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>�򵥵Ļ�����</title>
+	<title>简单的滑动门</title>
 	<style type="text/css">
 		#container{
 			height: 200px;
@@ -26,9 +26,11 @@
 			var imgs = box.getElementsByTagName("img");
 			var imgwidth = imgs[0].offsetWidth;
 			console.log(imgwidth);
+			//隐藏图片的宽度
 			var exposewidth = 60;
 			var boxwidth = imgwidth + exposewidth * (imgs.length-1);
 			box.style.width = boxwidth + "px";
+			//重新定位全部图片的初始位置
 			function setImgpos(){
 				for(var i = 1; i < imgs.length; i++){
 					imgs[i].style.left = imgwidth + exposewidth * (i - 1) + "px";
@@ -37,9 +39,11 @@
 			setImgpos();
 			var translate = imgwidth - exposewidth;
 			for(var i = 0; i < imgs.length; i++){
+				//闭包，立即调用函数
 				(function(i){
 					imgs[i].onmouseover = function(){
 						setImgpos();
+						//当前图片和之后的图片向左移动
 						for(var j = 0; j <= i; j++){
 							imgs[j].style.left = parseInt(imgs[j].style.left) - translate + "px";
 							var attributeImg = imgs[i].getAttribute("alt");
@@ -53,10 +57,10 @@
 </head>
 <body>
 	<div id="container">
-		<img src="images/01.jpg" alt="��һ��">
-		<img src="images/02.jpg" alt="�ڶ���">
-		<img src="images/03.jpg" alt="������">
-		<img src="images/04.jpg" alt="������">
+		<img src="images/01.jpg" alt="第一张">
+		<img src="images/02.jpg" alt="第二张">
+		<img src="images/03.jpg" alt="第三张">
+		<img src="images/04.jpg" alt="第四张">
 	</div>
 </body>
 </html>
