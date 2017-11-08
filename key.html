@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>键盘事件,抽奖</title>
+	<style type="text/css">
+		#box{
+			position: relative;
+			left: 300px;
+			width: 250px;
+			height: 120px;
+			border: 1px solid #000;
+		}
+		#box #goods{
+			position: absolute;
+			left: 25px;
+			top: 5px;
+			width: 200px;
+			height: 40px;
+			border: 1px solid #000;
+			text-align: center;
+			line-height: 40px;
+		}
+		#box #play_stop{
+			position: absolute;
+			left: 30px;
+			top: 55px;
+			width: 190px;
+			height: 50px;
+			border: 1px solid #000;
+		}
+		#play,#stop{
+			position: absolute;
+			top: 5px;
+			width: 80px;
+			height: 35px;
+			border: 1px solid #000;
+			text-align: center;
+			line-height: 35px;
+			background: #6B8EFF;
+			border-radius: 12px;
+			cursor: pointer;
+		}
+		#stop{
+			right: 10px;
+		}
+		#play{
+			left: 10px;
+		}
+		#play:hover,#stop:hover{
+			background: blue;
+		}
+	</style>
+	<script type="text/javascript">
+		var goods = ["iPad","iPhone","超极本","冰箱","洗衣机","谢谢惠顾"];
+		var timer = null;
+		var flag = 0;
+		window.onload = function(){
+			document.getElementById("play").onclick = playFun;
+			document.getElementById("stop").onclick = stopFun;
+			document.onkeyup = function(event){
+				event = event || window.event;
+				//console.log(event.keyCode);
+				if(event.keyCode == 13){
+					if(flag == 0){
+						playFun();
+						flag = 1;
+					}else{
+						stopFun();
+						flag = 0;
+					}
+				}
+			}
+		};
+		function playFun(){
+			clearInterval(timer);
+			timer=setInterval(function(){
+				var num = Math.floor(Math.random() * goods.length);
+				//console.log(num);
+				document.getElementById("goods").innerHTML = goods[num];
+			},100);
+			document.getElementById("play").style.background = "#ccc";
+		}
+		function stopFun(){
+			clearInterval(timer);
+			var a = document.getElementById("play");
+			a.style.background = "#6B8EFF";
+			a.onmouseover = function(){
+				this.style.background = "blue";
+			};
+			a.onmouseout = function(){
+				this.style.background = "#6B8EFF";
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="box">
+		<div id="goods">
+			欢迎抽奖
+		</div>
+		<div id="play_stop">
+			<span id="play">
+				开始
+			</span>
+			<span id="stop">
+				结束
+			</span>
+		</div>
+	</div>
+</body>
+</html>
